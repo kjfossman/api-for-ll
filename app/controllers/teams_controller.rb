@@ -5,7 +5,7 @@ class TeamsController < ApplicationController
   def index
     @teams = Team.all
 
-    render json: @teams
+    render json: @teams, include: {players: {only: [:name, :age]}}, except: [:created_at, :updated_at]
   end
 
   # GET /teams/1
