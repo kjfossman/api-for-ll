@@ -4,17 +4,17 @@ class Game < ApplicationRecord
 
     def winner 
         if home_team_score > away_team_score 
-            home_team_id
+            self.home_team.name
         else
-            away_team_id
+            self.away_team.name
         end
     end
 
     def loser
         if home_team_score > away_team_score 
-            away_team_id
+            self.away_team.name
         else
-            home_team_id
+            self.home_team.name
         end
     end
 

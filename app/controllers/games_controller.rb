@@ -3,9 +3,9 @@ class GamesController < ApplicationController
 
   # GET /games
   def index
-    @games = Game.all
-
-    render json: @games, except: [:created_at, :updated_at]
+    games = Game.all
+    render json: GameSerializer.new(games).to_serialized
+    # render json: @games, include: {home_team: {only: [:name]}}, except: [:created_at, :updated_at]
   end
 
   # GET /games/1

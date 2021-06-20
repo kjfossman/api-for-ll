@@ -7,7 +7,7 @@ class Team < ApplicationRecord
         games = self.away_games + self.home_games
 
         games.collect.count do |x|
-                x.winner == self.id 
+                x.winner == self.name
             end
     end
 
@@ -15,7 +15,7 @@ class Team < ApplicationRecord
         games = self.away_games + self.home_games
 
         games.collect.count do |x|
-                x.loser == self.id 
+                x.loser == self.name
             end
     end
     # has_many :wins, :class_name => "Game", :foreign_key => 'winner'
