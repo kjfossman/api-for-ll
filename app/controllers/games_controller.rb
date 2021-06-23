@@ -19,7 +19,8 @@ class GamesController < ApplicationController
     @game = Game.new(game_params)
 
     if @game.save
-      render json: @game, status: :created, location: @game
+      # render json: @game, status: :created, location: @game
+      render json: GameSerializer.new(@game).to_serialized
     else
       render json: @game.errors, status: :unprocessable_entity
     end
@@ -47,6 +48,6 @@ class GamesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def game_params
-      params.require(:game).permit(:date, :home_team_score, :away_team_score, :belongs_to, :belongs_to)
+      params.require(:game).permit(:home_team_id, :away_team_id, :date, :home_team_score, :away_team_score, :belongs_to, :belongs_to)
     end
 end
