@@ -9,7 +9,7 @@ class Game < ApplicationRecord
             if home_team_score > away_team_score 
                 {name: self.home_team.name, img: self.home_team.img}
             else
-                self.away_team
+                {name: self.away_team.name, img: self.away_team.img}
                 # self.away_team.name
             end
         else
@@ -21,9 +21,9 @@ class Game < ApplicationRecord
     def loser
         if home_team_score && away_team_score
             if home_team_score > away_team_score 
-                self.away_team.name
+                {name: self.away_team.name, img: self.away_team.img}
             else
-                self.home_team.name
+                {name: self.home_team.name, img: self.home_team.img}
             end
         else
             'N/A'
