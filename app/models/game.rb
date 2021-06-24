@@ -7,9 +7,10 @@ class Game < ApplicationRecord
     def winner 
         if home_team_score && away_team_score
             if home_team_score > away_team_score 
-                self.home_team.name
+                {name: self.home_team.name, img: self.home_team.img}
             else
-                self.away_team.name
+                self.away_team
+                # self.away_team.name
             end
         else
             
