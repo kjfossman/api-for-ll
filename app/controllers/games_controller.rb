@@ -29,7 +29,8 @@ class GamesController < ApplicationController
   # PATCH/PUT /games/1
   def update
     if @game.update(game_params)
-      render json: @game
+      # render json: @game
+      render json: GameSerializer.new(@game).to_serialized
     else
       render json: @game.errors, status: :unprocessable_entity
     end
