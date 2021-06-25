@@ -5,7 +5,7 @@ class PlayersController < ApplicationController
   def index
     @players = Player.all
 
-    render json: @players, except: [:created_at, :updated_at]
+    render json: @players, include: [:team], except: [:created_at, :updated_at]
   end
 
   # GET /players/1
