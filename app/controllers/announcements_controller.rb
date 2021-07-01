@@ -3,9 +3,9 @@ class AnnouncementsController < ApplicationController
 
   # GET /announcements
   def index
-    @announcements = Announcement.all
-
-    render json: @announcements
+    announcements = Announcement.all
+    announcements = announcements.ordered_by_updated
+    render json: announcements
   end
 
   # GET /announcements/1
