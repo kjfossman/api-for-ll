@@ -4,8 +4,9 @@ class Team < ApplicationRecord
     has_many :players
     
     def wins
+        
         games = self.away_games + self.home_games
-
+        games = games.find_all { |g| g.date.year == Date.today.year}
         games.collect.count do |x|
             if x.winner
                 x.winner[:name] == self.name
@@ -15,7 +16,7 @@ class Team < ApplicationRecord
 
     def losses 
         games = self.away_games + self.home_games
-
+        games = games.find_all { |g| g.date.year == Date.today.year}
         games.collect.count do |x|
             if x.loser != 'N/A'
                 x.loser[:name] == self.name
